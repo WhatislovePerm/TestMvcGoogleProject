@@ -1,0 +1,13 @@
+﻿@model PostViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+<hr />
+<p><b>Title:</b> @Model.Title</p>
+<p><b>Text:</b> @Model.Text</p>
+<p><b>Author:</b> @Model.UserEmail</p>
+<p><b>Date:</b> @Model.Date</p>
+<a asp-action="Index">Back to posts</a>

@@ -1,0 +1,43 @@
+﻿@model List<PostViewModel>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <h1 class="display-4 col-sm-2">@ViewData["Title"]</h1>
+        <a class="col-sm-1 h4 offset-10" asp-controller="Home" asp-action="Create">Create</a>
+    </div>
+    <hr/>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var post in Model)
+                {
+                    <tr>
+                        <td>@post.Title</td>
+                        <td>@post.UserEmail</td>
+                        <td>@post.Date</td>
+                        <td>
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">Details</a> |
+                            <a asp-controller="Home" asp-action="Edit" asp-route-id="@post.Id">Edit</a> |
+                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@post.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
